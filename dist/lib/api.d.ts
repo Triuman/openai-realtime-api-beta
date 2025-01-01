@@ -1,18 +1,19 @@
 export class RealtimeAPI extends RealtimeEventHandler {
     /**
      * Create a new RealtimeAPI instance
-     * @param {{url?: string, apiKey?: string, dangerouslyAllowAPIKeyInBrowser?: boolean, debug?: boolean}} [settings]
+     * @param {{url?: string, apiKey?: string, model?: string, debug?: boolean}} [settings]
      * @returns {RealtimeAPI}
      */
-    constructor({ url, apiKey, dangerouslyAllowAPIKeyInBrowser, debug }?: {
+    constructor({ url, apiKey, model, debug }?: {
         url?: string;
         apiKey?: string;
-        dangerouslyAllowAPIKeyInBrowser?: boolean;
+        model?: string;
         debug?: boolean;
     });
     defaultUrl: string;
     url: string;
     apiKey: string;
+    model: string;
     debug: boolean;
     ws: any;
     /**
@@ -31,9 +32,7 @@ export class RealtimeAPI extends RealtimeEventHandler {
      * @param {{model?: string}} [settings]
      * @returns {Promise<true>}
      */
-    connect({ model }?: {
-        model?: string;
-    }): Promise<true>;
+    connect(): Promise<true>;
     /**
      * Disconnects from Realtime API server
      * @param {WebSocket} [ws]
